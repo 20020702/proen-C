@@ -1,6 +1,6 @@
-let lat = 35.44778; // 緯度
-let lng= 139.6425; // 経度
-let zoom = 11; // ズームレベル
+let lat = 35.41417; // 緯度
+let lng= 139.3403; // 経度
+let zoom = 10; // ズームレベル
 
 let map = L.map("map"); // 地図の生成
 map.setView([lat, lng], zoom); // 緯度経度、ズームレベルを設定する
@@ -15,7 +15,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 ).addTo(map);
 
 // 外部のGeoJSONファイルを取得する
-fetch("./Point _Data.geojson")
+fetch("./point_Date.geojson")
   .then(response => response.json())
   // GeoJSONを地図に追加する
   .then(data => {
