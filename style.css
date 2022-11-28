@@ -27,44 +27,38 @@
     width: 40%;
     background-color: darkgray;}
 
-.new-registration{
+.pw-forget{
     text-align: center;}
 
-.new-registration button{
+.pw-forget button{
     font-size: 18px;
     margin: 15px;
     width: 40%;
     background-color: lightyellow;}
 
-/*2,3*/
-.registration-form,
-.registration2-form{text-align: center;}
+/*2*/
 
-.registration-form input,
-.registration2-form input
-.registration2-form select{
-    font-size: 24px;
+.registration-form{
+    text-align: center;}
+
+
+.registration-form input{
+    font-size: 18px;
     margin: 15px;
     width: 40%;}
-
-.check-box{text-align: center;}
-.check-box p,.check-box input{
-   font-size: 18px;
-   margin: 0 auto;
-   width: 10%;}
 
 /*1,2,3,4,5,8*/
 
 .login-btm,
 .registration-btm,
-.registration2-btm,
+.registration-com-btm,
 .delete-btm,
 .delete-com-btm
     {text-align: center;}
 
 .login-btm button,
 .registration-btm button,
-.registration2-btm button,
+.registration-com-btm button,
 .delete-btm button,
 .delete-com-btm button{
     font-size: 24px;
@@ -88,7 +82,7 @@
 
 .region-select-btm button{
     font-size: 18px;
-    margin-right: 15px;}
+    margin-right: 15px;} 
 
 /*9*/
 
