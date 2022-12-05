@@ -13,10 +13,10 @@
 <?php
 $dsn = "mysql:dbname=proe;host=localhost";
 $my = new PDO($dsn, "proe", "proe");
-$sql = "SELECT * FROM コーチ;";
+$sql = "SELECT コーチID,コーチ募集ID,名前,種目,メールアドレス FROM コーチ;";
 $st = $my->prepare($sql);
 $st->execute();
-$html = "<table border='1'><tr><th>コーチID</th><th>コーチ募集ID</th><th>名前</th><th>種目</th><th>評価ID</th><th>評価</th><th>パスワード</th><th>メールアドレス</th></tr>";
+$html = "<table border='1'><tr><th>コーチID</th><th>コーチ募集ID</th><th>名前</th><th>種目</th><th>メールアドレス</th></tr>";
 while($row = $st->fetch(PDO::FETCH_ASSOC)){
 $html .= "<tr>";
 foreach($row as $item) $html .= "<td>{$item}</td>";
