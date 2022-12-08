@@ -1,15 +1,14 @@
 // 例
 // 折れ線(PolyLine)の長さ
 
+
+
 var mymap = L.map('mymap').setView([35.41417, 139.3403], 10);
 var options = {
     key: '3c38d15e76c02545181b07d3f8cfccf0',
     limit: 10
   };
-  var geocoder = L.Control.OpenCageGeocoding.geocoder(options);
-  var control = L.Control.openCageGeocoding(options).addTo(mymap);
-  var marker;
-
+ 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
     '<a href="http://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
@@ -17,6 +16,8 @@ var options = {
     maxZoom: 18
     }).addTo(mymap);
 
+    var osmGeocoder = new L.Control.OSMGeocoder({placeholder: '検索内容を入れてください'});
+    mymap.addControl(osmGeocoder);
 
  // 外部のGeoJSONファイルを取得する
  fetch("./Point _Data.geojson")
@@ -52,7 +53,7 @@ function latlngdist(pos1, pos2) {	// latlng形式を2変数に展開して呼ぶ
 var path = [];				// クリックしたすべての点を保持する
 var line = null;			// polylineオブジェクトを保持する
 var lineprop = {			// polylineのプロパティ
-    color: 'navy', opacity: 0.6, weight: 8
+    color: '#fd5f00', opacity: 0.6, weight: 4
 };
 var sMarker, gMarker;			// 始点終点マーカ
 var totalDist = 0;			// 積算距離
@@ -72,7 +73,7 @@ function resetPath() {			// 初期状態に戻す
     info.innerHTML = 'クリアしました';
 }
 function measurePath(e) {		// クリック時の主となる処理
-    var imsg = '北緯 '+e.latlng.lat+' 東経 '+e.latlng.lng;
+   
     mymap.doubleClickZoom.disable();	// ダブルクリックズーム禁止
     if (path.length > 1
 	&& e.latlng.lat == path[path.length-1].lat
@@ -83,8 +84,8 @@ function measurePath(e) {		// クリック時の主となる処理
     path.push(e.latlng);		// クリック緯度経度を配列に追加
     if (path.length == 1) {		// 始点未設定なら
 	// 始点終点マーカを生成しマップに貼り付けポップアップ文字列を登録
-	sMarker = L.marker(path[0]).addTo(mymap).bindPopup(imsg);
-	gMarker = L.marker(path[0]).addTo(mymap).bindPopup(imsg);
+	sMarker = L.marker(path[0]).addTo(mymap);
+	gMarker = L.marker(path[0]).addTo(mymap);
 	line = L.polyline(path, lineprop).addTo(mymap)	// polyline生成
 	info.innerHTML = imsg;		// 情報表示
     } else {				// 2個目以後のポイント打ちなら
@@ -106,7 +107,7 @@ function removePoint(e) {		// 1つ取消
 	gMarker.setLatLng(path[path.length-1]);	// 終点マーカを最終点に移動
 	mymap.panTo(path[path.length-1]);	// 最終点が見えるようにする
     } else {				// polylineの点が1つ以下なら
-	info.innerHTML = '最初の位置は変更することができません。'
+	info.innerHTML = 'ピンを立ててください'
     }
 }
 mymap.on('click', measurePath);		// クリックイベントで measurePath()
