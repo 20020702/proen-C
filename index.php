@@ -1,6 +1,6 @@
 <!DOCTYPE html>
   <head>
-  <meta charset="Sutf-8">
+  <meta charset="utf-8">
   <title>トップページ</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
